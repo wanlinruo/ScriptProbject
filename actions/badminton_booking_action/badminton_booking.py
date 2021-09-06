@@ -15,11 +15,11 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 def set_time_desc() -> Tuple[str, str]:
     logger.info('set_time_desc...')
     # 获取五天后的凌晨时间戳（秒）
-    target_date = datetime.datetime.now() + datetime.timedelta(days=2)
+    target_date = datetime.datetime.now() + datetime.timedelta(days=4)
     logger.info('预定票日期：' + str(target_date.date()))
 
     # 抢票预定地方的场次开始时间
-    booking_place_start_time = '15:00'
+    booking_place_start_time = '20:00'
     logger.info('预定票场次时间（开始时间为准）：' + str(booking_place_start_time))
 
     # 把datetime转成字符串
@@ -180,7 +180,7 @@ def job():
 
 
 if __name__ == '__main__':
-    # scheduler = BlockingScheduler()
-    # scheduler.add_job(job, 'cron', hour='8', minute=59, second=55)
-    # scheduler.start()
-    job()
+    scheduler = BlockingScheduler()
+    scheduler.add_job(job, 'cron', hour='8', minute=59, second=55)
+    scheduler.start()
+    # job()
