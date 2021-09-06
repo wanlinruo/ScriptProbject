@@ -3,8 +3,11 @@
 import requests as requests
 from requests.adapters import HTTPAdapter
 
-# 设置重试次数
+# 全局请求配置
 request = requests.Session()
+# 设置代理
+# request.proxies = {}
+# 设置重试次数
 request.mount('https://', HTTPAdapter(max_retries=3))
 
 # 公共的请求头
@@ -22,3 +25,26 @@ common_head = {
     'Accept-Language': 'zh-cn',
     'Origin': 'https://xihuwenti.juyancn.cn',
 }
+
+'''
+https://www.zenrows.com/blog/stealth-web-scraping-in-python-avoid-blocking-like-a-ninja
+优化方向：
+1、轮换用户代理头
+import requests 
+import random 
+ 
+user_agents = [ 
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', 
+	'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36', 
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 
+	'Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148', 
+	'Mozilla/5.0 (Linux; Android 11; SM-G960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Mobile Safari/537.36' 
+] 
+user_agent = random.choice(user_agents) 
+headers = {'User-Agent': user_agent} 
+response = requests.get('https://httpbin.org/headers', headers=headers) 
+print(response.json()['headers']['User-Agent']) 
+# Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) ...
+
+2、
+'''

@@ -157,8 +157,9 @@ def go_to_pay(_param):
     }
     try:
         response = request.post(url=url, headers=headers, data=data)
+        logger.info('go_to_pay response:' + str(response))
         loads = json.loads(response.text)
-        logger.info('go_to_pay-response:' + str(loads))
+        logger.info('go_to_pay response-json:' + str(loads))
         # 判断是否成功
         if loads['code'] == 0:
             # 成功则机器人通知
