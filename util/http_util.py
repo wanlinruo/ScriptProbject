@@ -62,10 +62,9 @@ user_agent_list = [
     "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/19.77.34.5 Safari/537.1",
 ]
 # 设置代理
-choice = random.choice(ip_list)
-logger.info('choice...' + choice)
-request.proxies = {'https': 'https://' + choice,
-                   'http': 'http://' + choice}
+# choice = random.choice(ip_list)choice
+# logger.info('choice...' + choice)
+# request.proxies = {'https': 'https://' + choice, 'http': 'http://' + choice}
 # 设置重试次数
 # request.mount('https://', HTTPAdapter(max_retries=3))
 
@@ -76,7 +75,11 @@ common_head = {
               'WECHAT_OPENID=oAKYc03bKKdxKrjxRlid29eWSlLY; '
               'UM_distinctid=17b8c5ce6784b-09d7980877b4a1-6e375e39-13c680-17b8c5ce67911f2; '
               'PHPSESSID=5o7vskjb8hpk8mr4ogeg9t3pj7',
-    'User-Agent': random.choice(user_agent_list),
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_16) '
+                  'AppleWebKit/605.1.15 (KHTML, like Gecko) '
+                  'MicroMessenger/6.8.0(0x16080000) '
+                  'MacWechat/3.1.5(0x13010513) '
+                  'NetType/WIFI WindowsWechat',
     'Accept-Language': 'zh-cn',
     'Origin': 'https://xihuwenti.juyancn.cn',
 }
