@@ -1,15 +1,15 @@
 # -*- coding: UTF-8 -*-
 import datetime
 import json
+import time
 from typing import Tuple, Dict, List
 
+from apscheduler.schedulers.blocking import BlockingScheduler
 from bs4 import BeautifulSoup
 
 from util.http_util import request, common_head
 from util.log_util import logger
-from util.push_util import push_job
 from util.time_util import get_day_zero_time
-from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 def set_time_desc() -> Tuple[str, str]:
@@ -40,6 +40,11 @@ def go_to_ready(target_date_str, booking_place_start_time):
             break
         else:
             logger.info('暂时无场地可选择*' + str(running_times))
+
+        # 逢50次周期睡眠10，避免接口请求频繁被封ip
+        if running_times % 50 == 0:
+            logger.info('time.sleep...')
+            time.sleep(10)
     return info
 
 
@@ -182,5 +187,6 @@ def job():
 if __name__ == '__main__':
     scheduler = BlockingScheduler()
     scheduler.add_job(job, 'cron', hour='8', minute=59, second=55)
+    # scheduler.add_job(job, 'cron', hour='9', minute=9, second=55)
     scheduler.start()
     # job()

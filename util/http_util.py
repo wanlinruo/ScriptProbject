@@ -2,7 +2,8 @@
 import random
 
 import requests as requests
-from requests.adapters import HTTPAdapter
+
+from util.log_util import logger
 
 # 全局请求配置
 request = requests.Session()
@@ -48,8 +49,23 @@ ip_list = [
     '222.141.186.166:4210',
     '106.111.14.3:4257',
 ]
+user_agent_list = [
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:21.0.0) Gecko/20121011 Firefox/21.0.0",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101 Firefox/64.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
+    "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
+    "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6",
+    "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/19.77.34.5 Safari/537.1",
+]
 # 设置代理
-request.proxies = {'https': random.choice(ip_list)}
+choice = random.choice(ip_list)
+logger.info('choice...' + choice)
+request.proxies = {'https': 'https://' + choice,
+                   'http': 'http://' + choice}
 # 设置重试次数
 # request.mount('https://', HTTPAdapter(max_retries=3))
 
@@ -60,11 +76,7 @@ common_head = {
               'WECHAT_OPENID=oAKYc03bKKdxKrjxRlid29eWSlLY; '
               'UM_distinctid=17b8c5ce6784b-09d7980877b4a1-6e375e39-13c680-17b8c5ce67911f2; '
               'PHPSESSID=5o7vskjb8hpk8mr4ogeg9t3pj7',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_16) '
-                  'AppleWebKit/605.1.15 (KHTML, like Gecko) '
-                  'MicroMessenger/6.8.0(0x16080000) '
-                  'MacWechat/3.1.5(0x13010513) '
-                  'NetType/WIFI WindowsWechat',
+    'User-Agent': random.choice(user_agent_list),
     'Accept-Language': 'zh-cn',
     'Origin': 'https://xihuwenti.juyancn.cn',
 }
