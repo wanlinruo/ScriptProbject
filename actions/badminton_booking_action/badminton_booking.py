@@ -41,10 +41,10 @@ def go_to_ready(target_date_str, booking_place_start_time):
         else:
             logger.info('暂时无场地可选择*' + str(running_times))
 
-        # 逢50次周期睡眠10，避免接口请求频繁被封ip
-        if running_times % 50 == 0:
+        # 逢100次周期睡眠5秒，避免接口请求频繁被封ip
+        if running_times % 100 == 0:
             logger.info('time.sleep...')
-            time.sleep(10)
+            time.sleep(5)
     return info
 
 
@@ -161,7 +161,7 @@ def go_to_pay(_param):
         'couponId': '0',
     }
     try:
-        response = request.post(url=url, headers=headers, data=data)
+        response = request.post(url=url, headers=headers, data=data, timeout=3)
         logger.info('go_to_pay response:' + str(response))
         loads = json.loads(response.text)
         logger.info('go_to_pay response-json:' + str(loads))
@@ -185,8 +185,8 @@ def job():
 
 
 if __name__ == '__main__':
-    scheduler = BlockingScheduler()
-    scheduler.add_job(job, 'cron', hour='8', minute=59, second=55)
+    # scheduler = BlockingScheduler()
+    # scheduler.add_job(job, 'cron', hour=8, minute=59, second=55)
     # scheduler.add_job(job, 'cron', hour='9', minute=9, second=55)
-    scheduler.start()
-    # job()
+    # scheduler.start()
+    job()
