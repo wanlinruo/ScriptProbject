@@ -2,13 +2,15 @@
 
 import datetime
 
+from apscheduler.schedulers.blocking import BlockingScheduler
 from chinese_calendar import is_workday
+from typing import Tuple, Dict, List
 
 from actions.badminton_booking_action.booking_thread import BookingThread
 from util.log_util import logger
 
 
-def set_time_desc() -> tuple[str, dict[str, list[str]]]:
+def set_time_desc() -> Tuple[str, Dict[str, List[str]]]:
     logger.info('set_time_desc...')
     # 获取五天后的凌晨时间戳（秒）
     target_date = datetime.datetime.now() + datetime.timedelta(days=4)
