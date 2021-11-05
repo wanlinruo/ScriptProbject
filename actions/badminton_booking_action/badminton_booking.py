@@ -18,8 +18,7 @@ def set_time_desc() -> Tuple[str, Dict[str, List[str]]]:
 
     # 抢票预定地方的场次开始时间
     # 区分工作日和周末
-    current_date = datetime.datetime.now().date()
-    if is_workday(current_date):
+    if is_workday(target_date.date()):
         start_time_list = ['20:00']
     else:
         start_time_list = ['18:00', '20:00']

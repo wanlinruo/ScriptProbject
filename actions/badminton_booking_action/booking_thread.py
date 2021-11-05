@@ -46,7 +46,7 @@ class BookingThread(threading.Thread):
             # 逢100次周期睡眠30秒，避免接口请求频繁被封ip
             if running_times % 100 == 0:
                 self.log_info_tag('time.sleep...')
-                time.sleep(30)
+                time.sleep(10)
         return info
 
     def get_info(self) -> Tuple[Dict[str, str], List[Dict[str, str]]]:
