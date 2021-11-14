@@ -151,7 +151,7 @@ class BookingThread(threading.Thread):
         data = {
             'show_id': self.place_id,
             'username': '万林若',
-            'mobile': '18826243441',
+            'mobile': '17138836441',
             'smscode': '',
             'id_card': '441424199407170535',
             'certType': '10001',

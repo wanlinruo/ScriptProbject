@@ -57,8 +57,8 @@ def job():
 
 
 if __name__ == '__main__':
-    # scheduler = BlockingScheduler()
-    # scheduler.add_job(job, 'cron', hour=8, minute=59, second=55)
+    scheduler = BlockingScheduler()
+    scheduler.add_job(job, 'cron', hour=8, minute=59, second=55)
     # scheduler.add_job(job, 'cron', hour='9', minute=9, second=55)
-    # scheduler.start()
-    job()
+    scheduler.start()
+    # job()

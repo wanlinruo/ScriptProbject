@@ -71,10 +71,11 @@ user_agent_list = [
 # 公共的请求头
 common_head = {
     'Host': 'xihuwenti.juyancn.cn',
-    'Cookie': 'CNZZDATA1274723626=1490805407-1630140490-%7C1630140490; '
-              'WECHAT_OPENID=oAKYc03bKKdxKrjxRlid29eWSlLY; '
-              'UM_distinctid=17b8c5ce6784b-09d7980877b4a1-6e375e39-13c680-17b8c5ce67911f2; '
-              'PHPSESSID=5o7vskjb8hpk8mr4ogeg9t3pj7',
+    'Cookie': 'CNZZDATA1274723626=1000439594-1636897400-%7C1636897400; '
+              'WECHAT_OPENID=oAKYc0wChKSJXk-Qt_ZLEsxWraBQ; '
+              'OAUTHACCESS=%257B%2522access_token%2522%253A%252251_4FPf5ME7v9ZIndi5nvdtmoRRO_GIl32J8MJstoCBZsoRh1PnSdwsr4C4c-O4UP-_a63cXpnJZ7YduHl84kp2lg%2522%252C%2522expires_in%2522%253A7200%252C%2522refresh_token%2522%253A%252251_s_OljbLSVEN-5mEStqQtz-tRPMC5q-Mmlioo3yo3jcUaSJbwPsFBKbhC7uklZn4ignAESKbkgpKqwHdETEjMFA%2522%252C%2522openid%2522%253A%2522oAKYc0wChKSJXk-Qt_ZLEsxWraBQ%2522%252C%2522scope%2522%253A%2522snsapi_userinfo%2522%252C%2522mid%2522%253A0%257D; '
+              'UM_distinctid=17d1eec7ca82ee-0eda95c9a32666-513d0b67-13c680-17d1eec7ca9e69; '
+              'PHPSESSID=187d0ngs75djccj4mp1ljnsmf7',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_16) '
                   'AppleWebKit/605.1.15 (KHTML, like Gecko) '
                   'MicroMessenger/6.8.0(0x16080000) '
